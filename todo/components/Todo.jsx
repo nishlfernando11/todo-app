@@ -6,8 +6,8 @@ class Todo extends Component{
         return(
             <div className="App">
             <ul>
-            {todoList.map((todo) => (
-                <li>{todo.task}<span></span><button onClick={ completeTodo }>Done</button></li>
+            {todoList.map((todo, index) => (
+                <li key={index}>{todo.task}<span></span> <button onClick={ completeTodo }>Done</button></li>
             )
             )}
             </ul>

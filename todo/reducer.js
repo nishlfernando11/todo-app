@@ -1,13 +1,16 @@
 import { ADD_TODO, UPDATE_TODO, REMOVE_TODO, COMPLETE_TODO } from './actions';
 
 const initialState = {
-    todoList: [{'task':'my new'}, {'task': 'second'}]
+    todoList: [{'task':'my'}, {'task': 'second'}]
 };
 
 const todoReducer = (state=initialState, action) =>{
     switch(action.type){
         case ADD_TODO: {
-            return state;
+            return { 
+                ...state,
+                todoList: [...state.todoList, action.data]
+            }
         }
         case UPDATE_TODO: {
             return state;

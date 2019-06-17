@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import Todo from './Todo.jsx';
+import Todo from './components/Todo.jsx';
 import { addTodo, updateTodo, removeTodo, completeTodo } from './actions';
 
 const mapToProps = (state) => ({ 
-        todoList: state.todoList
+        todoList: state.todos.todoList
 });
 
 const mapDispactToProps = (dispatch) => {
