@@ -27,16 +27,14 @@ class AddTodo extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({}) // <-- setup options and such
-// link up desired behavior onSubmit
-// this is a sample alert with the values
+const mapStateToProps = state => ({}) // can set any defaults
+
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => dispatch(addTodo(values))
 });
 
 AddTodo = reduxForm({
   form: "AddTodoForm" // a unique identifier for this form
-  // onSubmit: _ => {} ALT SOLUTION: can pass it in here
 })(AddTodo);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);

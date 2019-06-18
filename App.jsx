@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Container from './todo/Container';
+import Todos from './todo/components/Todos.jsx';
 import AddTodo from './todo/components/AddTodo.jsx';
 import "./todo/style.css";
 
@@ -13,7 +13,7 @@ class App extends Component {
                 </div>
             </header>
             <AddTodo />
-            <Container />
+            <Todos />
             </div>
         )
     }
