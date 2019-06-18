@@ -3,14 +3,26 @@ import { reduxForm, Field } from 'redux-form';
 import { addTodo } from '../actions';
 import { connect } from 'react-redux';
 
+const required = value => value ? undefined : 'Required';
+
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+);
+
 class AddTodo extends React.Component {
     render() {
-      const {handleSubmit} = this.props; // <-- get from props
+      const { handleSubmit } = this.props; // <-- get from props
       return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="todo">Add Todo </label>
-                <Field name="task" component="input" type="text" />
+                <Field name="task" component={renderField} type="text" validate={[ required ]}/>
             </div>
           <button type="submit">Add</button>
         </form>
@@ -26,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 AddTodo = reduxForm({
-  form: "AddTodoForm", // a unique identifier for this form
+  form: "AddTodoForm" // a unique identifier for this form
   // onSubmit: _ => {} ALT SOLUTION: can pass it in here
 })(AddTodo);
 
