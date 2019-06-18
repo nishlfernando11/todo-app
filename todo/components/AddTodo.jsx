@@ -9,7 +9,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} placeholder={label} type={type}/>
+      <input {...input} type={type}/>
       {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
     </div>
   </div>
@@ -20,10 +20,7 @@ class AddTodo extends React.Component {
       const { handleSubmit } = this.props; // <-- get from props
       return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="todo">Add Todo </label>
-                <Field name="task" component={renderField} type="text" validate={[ required ]}/>
-            </div>
+          <Field name="task" component={renderField} type="text" label="Add Todo" validate={[ required ]}/>
           <button type="submit">Add</button>
         </form>
       )
